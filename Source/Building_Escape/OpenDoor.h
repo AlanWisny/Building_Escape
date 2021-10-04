@@ -7,7 +7,6 @@
 #include "Engine/TriggerVolume.h"
 #include "OpenDoor.generated.h"
 
-
 UCLASS(ClassGroup = (Custom), meta = (BlueprintSpawnableComponent))
 class BUILDING_ESCAPE_API UOpenDoor : public UActorComponent
 {
@@ -26,16 +25,28 @@ public:
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction *ThisTickFunction) override;
 	void OpenDoor(float DeltaTime);
 	void CloseDoor(float DeltaTime);
+	float TotalMassOfActors() const;
+	void FindAudioCOmponent();
+	void FindPressurePlate(); 
+
+	// Tracks whether the sound has been played
+	bool OpenDoorSound = false;
+	bool CloseDoorSound = true;
 
 private:
 	float InitialYaw;
 	float CurrentYaw;
 
 	UPROPERTY(EditAnywhere)
+	float MassToOpenDoors = 50.f;
+
+	UPROPERTY(EditAnywhere)
 	float TargetYaw = -90.f;
-	
+
 	float DoorLastOpened = 0.f;
-	float DoorCloseDelay = 1.f;
+
+	UPROPERTY(EditAnywhere)
+	float DoorCloseDelay = 0.75f;
 
 	UPROPERTY(EditAnywhere)
 	float DoorOpenSpeed = 1.4f;
@@ -44,10 +55,8 @@ private:
 	float DoorCloseSpeed = 5.f;
 
 	UPROPERTY(EditAnywhere)
-	ATriggerVolume* PressurePlate;
+	ATriggerVolume *PressurePlate = nullptr;
 
-	UPROPERTY(EditAnywhere)
-	AActor* ActorThatOpens;
-
-	
+	UPROPERTY()
+	UAudioComponent* AudioComponent = nullptr;
 };

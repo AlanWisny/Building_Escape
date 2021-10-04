@@ -13,13 +13,9 @@
 		"typescript.tsc.autoDetect": "off",
 		"C_Cpp.default.forcedInclude": [
 			"${default}",
-			"D:\\Unreal Projects\\Building_Escape\\Intermediate\\Build\\Win64\\UE4Editor\\Development\\Building_Escape\\Definitions.Building_Escape.h",
-			"D:\\Unreal Projects\\Building_Escape\\Intermediate\\Build\\Win64\\Building_EscapeEditor\\Development\\Engine\\SharedPCH.Engine.ShadowErrors.h"
-		],
-		"files.associations": {
-			"fstream": "cpp",
-			"vector": "cpp"
-		}
+			"D:\\Unreal Engine 4 Projects\\Building_Escape\\Intermediate\\Build\\Win64\\UE4Editor\\Development\\Building_Escape\\Definitions.Building_Escape.h",
+			"D:\\Unreal Engine 4 Projects\\Building_Escape\\Intermediate\\Build\\Win64\\Building_EscapeEditor\\Development\\Engine\\SharedPCH.Engine.ShadowErrors.h"
+		]
 	},
 	"extensions": {
 		"recommendations": [

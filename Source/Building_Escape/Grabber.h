@@ -8,27 +8,30 @@
 #include "PhysicsEngine/PhysicsHandleComponent.h"
 #include "Grabber.generated.h"
 
-UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
+UCLASS(ClassGroup = (Custom), meta = (BlueprintSpawnableComponent))
 class BUILDING_ESCAPE_API UGrabber : public UActorComponent
 {
 	GENERATED_BODY()
 
-public:	
+public:
 	// Sets default values for this component's properties
-	UGrabber();		// The class derived from UObject (That we created)
+	UGrabber(); // The class derived from UObject (That we created)
 
 	// Called every frame
-	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
+	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction *ThisTickFunction) override;
 
 protected:
 	// Called when the game starts
-	virtual void BeginPlay() override;	
+	virtual void BeginPlay() override;
 
 private:
-	float Reach = 100.f;	
+	float Reach = 100.f;
 
-	UPhysicsHandleComponent* PhysicsHandle = nullptr;
-	UInputComponent* InputComponent = nullptr;
+	UPROPERTY()
+	UPhysicsHandleComponent *PhysicsHandle = nullptr;
+
+	UPROPERTY()
+	UInputComponent *InputComponent = nullptr;
 
 	void Grab();
 	void Release();
@@ -37,4 +40,10 @@ private:
 
 	// Return the first Actor within reach witgh physics body.
 	FHitResult GetFirstPhysicsBodyInReach() const;
+
+	// Return the Line Trace End
+	FVector GetPlayerReach() const;
+
+	// Get players Position in World
+	FVector GetPlayersWorldPos() const;
 };
